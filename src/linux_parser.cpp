@@ -1,4 +1,5 @@
 #include "linux_parser.h"
+#include "format.h"
 #include <dirent.h>
 #include <string>
 #include <unistd.h>
@@ -147,12 +148,10 @@ vector<string> LinuxParser::CpuUtilization() {
   sleep(10);
   long lActiveJiffies = ActiveJiffies();
   long lIdleJiffies = IdleJiffies();
-  long total =
-      ((lActiveJiffies + lIdleJiffies) - (lOldActiveJiffies + lOldIdleJiffies));
-  float seconds = (float)(lActiveJiffies - lOldActiveJiffies) / total;
-  string ut = to_string(seconds);
   vector<string> vResult;
-  vResult.push_back(ut);
+  vResult.push_back(Format::ElapsedTime(((lActiveJiffies - lOldActiveJiffies) -
+                                         (lIdleJiffies - lOldIdleJiffies)) /
+                                        (lActiveJiffies - lOldActiveJiffies)));
   return vResult;
 }
 
