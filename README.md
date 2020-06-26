@@ -12,5 +12,5 @@
 ## Build Instructions
 
 - Clone this repo
-- Run: 'make build && ./build/monitor'
-- Clean: 'make clean'
+- Run: `make build && ./build/monitor`
+- Clean: `make clean`
