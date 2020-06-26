@@ -1,6 +1,3 @@
-.PHONY: all
-all: format test build
-
 .PHONY: build
 build:
 	mkdir -p build
